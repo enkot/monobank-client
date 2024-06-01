@@ -1,11 +1,11 @@
 import type { PathLike } from 'node:fs'
 import fs from 'node:fs'
-import crypto from 'node:crypto'
+import { type KeyObject, createSign } from 'node:crypto'
 import { Buffer } from 'node:buffer'
 import { SignerError } from './error'
 
 export class Signer {
-  pkey: string | crypto.KeyObject
+  pkey: string | KeyObject
 
   constructor(privateKey: PathLike, options?: { keyHeaderPattern: string | RegExp }) {
     try {
@@ -22,8 +22,7 @@ export class Signer {
   }
 
   sign(data: string | Buffer) {
-    return crypto
-      .createSign('sha256')
+    return createSign('sha256')
       .update(Buffer.isBuffer(data) ? data : Buffer.from(data))
       .sign(this.pkey, 'base64')
   }
