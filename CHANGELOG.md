@@ -1,6 +1,21 @@
 # Changelog
 
 
+## v0.0.2
+
+
+### 🚀 Enhancements
+
+- Init ([8c7b11a](https://github.com/enkot/monobank-client/commit/8c7b11a))
+
+### 💅 Refactors
+
+- Signer ([91d43a4](https://github.com/enkot/monobank-client/commit/91d43a4))
+
+### ❤️ Contributors
+
+- Enkot ([@enkot](http://github.com/enkot))
+
 ## v0.0.1
 
 
