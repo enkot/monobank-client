@@ -7,17 +7,14 @@ export class ApiClient {
   constructor(private globalOptions: ApiClientOptions) {}
 
   public async fetch<T>(endpoint: string, options?: ApiClientOptions): Promise<T> {
-    const headers = {
-      ...this.getHeaders?.(endpoint, options?.headers || {}),
-      ...options?.headers,
-    }
-
-    this.getHeaders = undefined
-
     return ApiClient.fetch(endpoint, {
       ...this.globalOptions,
       ...options,
-      headers,
+      getHeaders: (url, headers) => {
+        const res = this.getHeaders?.(url, headers)
+        this.getHeaders = undefined
+        return res || {}
+      },
     })
   }
 
@@ -32,6 +29,7 @@ export class ApiClient {
     const headers = {
       'content-type': 'application/json',
       'accept': 'application/json',
+      ...(await options?.getHeaders?.(endpoint, options?.headers || {})),
       ...options?.headers,
     }
 
