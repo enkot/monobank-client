@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/enkot/monobank-client/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Api client ([f3d0136](https://github.com/enkot/monobank-client/commit/f3d0136))
+
+### ❤️ Contributors
+
+- Enkot ([@enkot](http://github.com/enkot))
+
 ## v0.0.2
 
 
